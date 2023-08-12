@@ -38,8 +38,11 @@ val snapShotList = mutableStateListOf<Triple<IDetector, IDetector.Result?, Detai
     Triple(FileDetection(appContext, true), null, null),
 
     Triple(XposedModules(appContext), null, null),
-    Triple(MagiskApp(appContext), null, null)
-)
+    Triple(MagiskApp(appContext), null, null),
+    Triple(MagiskRandomPackageName(appContext), null, null)
+
+
+    )
 
 suspend fun runDetector(id: Int, packages: Collection<String>?) {
     withContext(Dispatchers.IO) {
@@ -56,6 +59,8 @@ fun MainPage(modifier: Modifier) {
         for (i in 1..6) runDetector(i, basicAppList)
         runDetector(7, null)
         runDetector(8, null)
+        runDetector(9, null)
+
     }
 
     Column(
